@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -10,16 +9,11 @@ public class Main {
 
     private static String calc(String input) {
 
-//        if (!isCorrectInput(input)) {
-//            throw new IllegalArgumentException("Некорректный ввод. " +
-//                    "\nЗначения могут быть арабской системы счисления в диапазоне 0-10 " +
-//                    "\nили римской системы счисления в диапазоне I-X");
-//        }
         char[] inputToCharArr = input.toCharArray();
-        int value1 = 0;
-        int value2 = 0;
+        int value1;
+        int value2;
         char operation = ' ';
-        int rez = 0;
+        int rez;
 
 
         for (char c : inputToCharArr) {
@@ -37,17 +31,7 @@ public class Main {
             }
         }
 
-        /* (isRomaValue(parts[0]) && isRomaValue(parts[1])) {
-            value1 = romanToInt(parts[0]);
-            value2 = romanToInt(parts[1]);
-            rez = operation(value1, value2, operation);
-            if (rez < 0) {
-                throw new IllegalArgumentException("Результат операции ниже нуля.");
-            }
-            return intToRoman(rez);  */
 
-        //(?<=\\D)(?=\\d)"
-        //[+-/*]
         String[] parts = input.replaceAll(" ", "").toUpperCase().split("[^\\d\\sA-Z]");
         if (parts.length > 2) {
             throw new IllegalArgumentException("Проверьте корректность данных. " +
@@ -77,21 +61,6 @@ public class Main {
     private static final int[] arabic = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
     private static final String[] roman = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
-//    private static boolean isCorrectInput(String input) {
-//        String[] partsOfInput = input.split("[+-/*]");
-//        if (isRomaValue(partsOfInput[0]) || (isRomaValue(partsOfInput[1]))) {
-//            return true;
-//        } else if (isInteger(partsOfInput[0])  || isInteger(partsOfInput[1])) {
-//            boolean p1 = Integer.parseInt(partsOfInput[0]) > 0;
-//            boolean p2 = Integer.parseInt(partsOfInput[1]) <= 10;
-//        }
-//        return false;
-//    }
-
-
-//    private static boolean isInteger(Object partOfInput) {
-//        return partOfInput instanceof Integer;
-//    }
     private static boolean isInteger(String partOfInput) {
         try {
             int isInt = Integer.parseInt(partOfInput);
@@ -106,18 +75,8 @@ public class Main {
             return false;
     }
 
-//    private static boolean isRomaValueInRange(String romaVal) {
-//        String[] romaNumRange = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
-//        for (String num : romaNumRange) {
-//            if (romaVal.equals(num)) {
-//
-//            }
-//        }
-//    }
-
 
     private static boolean isRomaValue(String partOfInput) {
-        //TODO: сделать красиво, придумать как кинуть исключение если римское число вне диапазона
         String[] romaNumRange = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
         for (String keys : romaNumRange) {
             if (partOfInput.equals(keys)) {
